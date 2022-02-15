@@ -26,7 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                'Welcome',
+                'Login',
                 style: Theme.of(context).textTheme.headline1,
               ),
               UIHelper.verticalSpaceLarge(),
@@ -59,7 +59,19 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-              UIHelper.verticalSpaceLarge(),
+              UIHelper.verticalSpaceMedium(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: const [
+                  Text(
+                    "Forgot Password?",
+                    style: TextStyle(
+                      color: Colors.purple,
+                    ),
+                  ),
+                ],
+              ),
+              UIHelper.verticalSpaceMedium(),
               SizedBox(
                 height: 40,
                 width: double.infinity,
@@ -68,7 +80,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const HomeScreen()),
+                      MaterialPageRoute(
+                          builder: (context) => const HomeScreen()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
@@ -103,7 +116,10 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               UIHelper.verticalSpaceMedium(),
               InkWell(
-                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const SignupScreen())),
+                // onTap: () => Navigator.push(
+                //   context,
+                //   MaterialPageRoute(builder: (context) => const SignupScreen()),
+                // ),
                 child: Container(
                   padding: const EdgeInsets.symmetric(
                     vertical: 8,
@@ -120,7 +136,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const Icon(Icons.phone_iphone_outlined, size: 20,),
+                      const Icon(
+                        Icons.phone_iphone_outlined,
+                        size: 20,
+                      ),
                       UIHelper.horizontalSpaceSmall(),
                       Text(
                         "Login with Phone number",
@@ -129,6 +148,32 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                 ),
+              ),
+              UIHelper.verticalSpaceLarge(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    "New to this app? ",
+                    style: Theme.of(context).textTheme.bodyText1,
+                  ),
+                  InkWell(
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (ctx) => const SignupScreen()),
+                    ),
+                    child: const Text(
+                      "Register",
+                      style: TextStyle(
+                        fontFamily: 'ProximaNova',
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.purple,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
