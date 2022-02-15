@@ -1,4 +1,12 @@
+import 'package:ebizz_infotech_project/screens/auth/login/login_screen.dart';
+import 'package:ebizz_infotech_project/screens/auth/signup/signup_screen.dart';
+import 'package:ebizz_infotech_project/screens/cart/cart_screen.dart';
+import 'package:ebizz_infotech_project/utils/theme.dart';
 import 'package:flutter/material.dart';
+
+import 'screens/home/home_screen.dart';
+
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,12 +18,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Ebizz Test App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: appTheme,
       debugShowCheckedModeBanner: false,
-      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const LoginScreen(),
     );
   }
 }
-
