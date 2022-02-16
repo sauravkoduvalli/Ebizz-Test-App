@@ -1,6 +1,9 @@
 import 'package:ebizz_infotech_project/screens/auth/signup/signup_screen.dart';
 import 'package:ebizz_infotech_project/screens/home/home_screen.dart';
 import 'package:ebizz_infotech_project/utils/ui_helper.dart';
+import 'package:ebizz_infotech_project/widgets/default_button.dart';
+import 'package:ebizz_infotech_project/widgets/divider_widget.dart';
+import 'package:ebizz_infotech_project/widgets/text_field_widget.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -25,41 +28,28 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              // head text
               Text(
                 'Login',
                 style: Theme.of(context).textTheme.headline1,
               ),
               UIHelper.verticalSpaceLarge(),
-              SizedBox(
-                height: 50,
-                child: TextField(
-                  controller: emailController,
-                  decoration: const InputDecoration(
-                    icon: Icon(
-                      Icons.alternate_email_outlined,
-                      size: 20,
-                    ),
-                    // border: OutlineInputBorder(),
-                    labelText: 'Username',
-                  ),
-                ),
+              // username field
+              TextFieldWidget(
+                controller: emailController,
+                hintText: "Username",
+                icon: Icon(Icons.alternate_email_outlined, size: 20),
+                type: "string",
               ),
               UIHelper.verticalSpaceMedium(),
-              SizedBox(
-                height: 50,
-                child: TextField(
-                  controller: passController,
-                  decoration: const InputDecoration(
-                    icon: Icon(
-                      Icons.lock,
-                      size: 20,
-                    ),
-                    // border: OutlineInputBorder(),
-                    labelText: 'Password',
-                  ),
-                ),
+              // password field
+              TextFieldWidget(
+                controller: passController,
+                hintText: "Password",
+                icon: Icon(Icons.lock, size: 20),
+                type: "string",
               ),
-              UIHelper.verticalSpaceMedium(),
+              UIHelper.verticalSpaceSmall(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: const [
@@ -72,49 +62,22 @@ class _LoginScreenState extends State<LoginScreen> {
                 ],
               ),
               UIHelper.verticalSpaceMedium(),
-              SizedBox(
-                height: 40,
-                width: double.infinity,
-                child: ElevatedButton(
-                  child: const Text('Login'),
-                  onPressed: () {
-                    Navigator.push(
+              // signup button
+              DefaultButton(
+                onPress: () {
+                  Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const HomeScreen()),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.purple,
-                  ),
-                ),
+                          builder: (context) => const HomeScreen()));
+                },
+                text: 'Login',
+                color: Colors.purple,
               ),
               UIHelper.verticalSpaceMedium(),
               // OR divider row
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Container(
-                      margin: const EdgeInsets.only(left: 10.0, right: 20.0),
-                      child: const Divider(
-                        color: Colors.black,
-                        height: 36,
-                      ),
-                    ),
-                  ),
-                  const Text("OR"),
-                  Expanded(
-                    child: Container(
-                      margin: const EdgeInsets.only(left: 20.0, right: 10.0),
-                      child: const Divider(
-                        color: Colors.black,
-                        height: 36,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              OrDividerWidget(),
               UIHelper.verticalSpaceMedium(),
+              // Login with phone number button
               InkWell(
                 // onTap: () => Navigator.push(
                 //   context,
@@ -150,6 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               UIHelper.verticalSpaceLarge(),
+              // new user register link
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -158,7 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     "New to this app? ",
                     style: Theme.of(context).textTheme.bodyText1,
                   ),
-                  InkWell(
+                  GestureDetector(
                     onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(builder: (ctx) => const SignupScreen()),

@@ -1,5 +1,8 @@
 import 'package:ebizz_infotech_project/screens/auth/login/login_screen.dart';
+import 'package:ebizz_infotech_project/screens/home/home_screen.dart';
 import 'package:ebizz_infotech_project/utils/ui_helper.dart';
+import 'package:ebizz_infotech_project/widgets/default_button.dart';
+import 'package:ebizz_infotech_project/widgets/text_field_widget.dart';
 import 'package:flutter/material.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -10,9 +13,8 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController passController = TextEditingController();
   TextEditingController emailController = TextEditingController();
+  TextEditingController passController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -33,79 +35,40 @@ class _SignupScreenState extends State<SignupScreen> {
                 style: Theme.of(context).textTheme.headline1,
               ),
               UIHelper.verticalSpaceLarge(),
-              SizedBox(
-                height: 50,
-                child: TextField(
-                  controller: emailController,
-                  decoration: const InputDecoration(
-                    icon: Icon(
-                      Icons.alternate_email_outlined,
-                      size: 20,
-                    ),
-                    // border: OutlineInputBorder(),
-                    labelText: 'Username',
-                  ),
-                ),
+              // username field
+              TextFieldWidget(
+                controller: emailController,
+                hintText: "Username",
+                icon: Icon(Icons.alternate_email_outlined, size: 20),
+                type: "string",
               ),
               UIHelper.verticalSpaceMedium(),
-              SizedBox(
-                height: 50,
-                child: TextField(
-                  controller: passController,
-                  decoration: const InputDecoration(
-                    icon: Icon(
-                      Icons.lock,
-                      size: 20,
-                    ),
-                    // border: OutlineInputBorder(),
-                    labelText: 'Password',
-                  ),
-                ),
+              // password field
+              TextFieldWidget(
+                controller: passController,
+                hintText: "Password",
+                icon: Icon(Icons.lock, size: 20),
+                type: "string",
               ),
               UIHelper.verticalSpaceMedium(),
-              SizedBox(
-                height: 50,
-                child: TextField(
-                  controller: phoneController,
-                  decoration: const InputDecoration(
-                    icon: Icon(
-                      Icons.phone_iphone_outlined,
-                      size: 20,
-                    ),
-                    // border: OutlineInputBorder(),
-                    labelText: 'Phone Number',
-                  ),
-                ),
+              // phone number field
+              TextFieldWidget(
+                controller: phoneController,
+                hintText: "Phone number",
+                icon: Icon(Icons.phone_iphone_outlined, size: 20),
+                type: "number",
               ),
-              // UIHelper.verticalSpaceMedium(),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.end,
-              //   children: const [
-              //     Text(
-              //       "Forgot Password?",
-              //       style: TextStyle(
-              //         color: Colors.purple,
-              //       ),
-              //     ),
-              //   ],
-              // ),
-              UIHelper.verticalSpaceExtraLarge(),
-              SizedBox(
-                height: 40,
-                width: double.infinity,
-                child: ElevatedButton(
-                  child: const Text('Signup'),
-                  onPressed: () {
-                    Navigator.push(
+              UIHelper.verticalSpaceLarge(),
+              // signup button
+              DefaultButton(
+                text: 'Signup',
+                color: Colors.purple,
+                onPress: () {
+                  Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const LoginScreen()),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.purple,
-                  ),
-                ),
+                          builder: (context) => const HomeScreen()));
+                },
               ),
               UIHelper.verticalSpaceExtraLarge(),
               // OR divider row
@@ -133,7 +96,7 @@ class _SignupScreenState extends State<SignupScreen> {
               //   ],
               // ),
               // UIHelper.verticalSpaceMedium(),
-               Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
