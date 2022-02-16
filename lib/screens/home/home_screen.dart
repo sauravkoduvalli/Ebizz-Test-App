@@ -7,23 +7,27 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Home"),
-        automaticallyImplyLeading: false,
-        actions: [
-          IconButton(
-            onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const CartScreen()),
-            ),
-            icon: const Icon(
-              Icons.shopping_cart_rounded,
-              color: Colors.white,
-            ),
-          ),
-        ],
-      ),
+      appBar: _appbar(context),
       body: Container(),
+    );
+  }
+
+  AppBar _appbar(BuildContext context) {
+    return AppBar(
+      title: const Text("Home"),
+      automaticallyImplyLeading: false,
+      actions: [
+        IconButton(
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const CartScreen()),
+          ),
+          icon: const Icon(
+            Icons.shopping_cart_rounded,
+            color: Colors.white,
+          ),
+        ),
+      ],
     );
   }
 }
