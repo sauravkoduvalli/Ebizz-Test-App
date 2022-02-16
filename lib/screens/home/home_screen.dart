@@ -18,7 +18,7 @@ class HomeScreen extends StatelessWidget {
             ),
             icon: const Icon(
               Icons.shopping_cart_rounded,
-              color: Colors.black,
+              color: Colors.white,
             ),
           ),
         ],
