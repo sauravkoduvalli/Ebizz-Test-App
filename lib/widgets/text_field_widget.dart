@@ -8,6 +8,7 @@ class TextFieldWidget extends StatefulWidget {
     required this.icon,
     required this.type,
     this.isPswd = false,
+    required this.errorText,
   }) : super(key: key);
 
   final TextEditingController controller;
@@ -15,6 +16,7 @@ class TextFieldWidget extends StatefulWidget {
   final Icon icon;
   final bool isPswd;
   final String type;
+  final String errorText;
 
   @override
   State<TextFieldWidget> createState() => _TextFieldWidgetState();
@@ -28,11 +30,23 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
       child: TextFormField(
         controller: widget.controller,
         obscureText: widget.isPswd,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        validator: (value) {
+          if (value!.isEmpty) {
+            return widget.errorText;
+          } else if (widget.isPswd == true && value.length < 6) {
+            return widget.errorText;
+          } else {
+            return null;
+          }
+        },
         // textInputAction: TextInputAction.next,
-        keyboardType: widget.type == "string" ? TextInputType.emailAddress : TextInputType.numberWithOptions(),
+        keyboardType: widget.type == "string"
+            ? TextInputType.emailAddress
+            : TextInputType.numberWithOptions(),
         decoration: InputDecoration(
-          prefixIcon: widget.icon,
-          border: OutlineInputBorder(),
+          icon: widget.icon,
+          // border: OutlineInputBorder(),
           labelText: widget.hintText,
         ),
       ),

@@ -1,5 +1,7 @@
 import 'package:ebizz_infotech_project/screens/cart/cart_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -20,10 +22,20 @@ class HomeScreen extends StatelessWidget {
         IconButton(
           onPressed: () => Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const CartScreen()),
+            PageTransition(
+              child: CartScreen(),
+              type: PageTransitionType.fade,
+            ),
           ),
           icon: const Icon(
             Icons.shopping_cart_rounded,
+            color: Colors.white,
+          ),
+        ),
+        IconButton(
+          onPressed: () => FirebaseAuth.instance.signOut(),
+          icon: const Icon(
+            Icons.power_settings_new_outlined,
             color: Colors.white,
           ),
         ),
