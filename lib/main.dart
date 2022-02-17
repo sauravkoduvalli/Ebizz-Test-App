@@ -1,11 +1,9 @@
 import 'package:ebizz_infotech_project/screens/auth/login/login_screen.dart';
-import 'package:ebizz_infotech_project/screens/auth/signup/signup_screen.dart';
 import 'package:ebizz_infotech_project/utils/theme.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-import 'screens/auth/utils.dart';
 import 'screens/home/home_screen.dart';
 
 void main() async {
